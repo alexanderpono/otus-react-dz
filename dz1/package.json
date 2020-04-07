@@ -30,8 +30,21 @@
   },
   "babel": {
     "presets": [
-      "@babel/env",
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "chrome": "41",
+            "ie": "10"
+          },
+          "debug": true,
+          "useBuiltIns": "usage"
+        }
+      ],
       "@babel/typescript"
     ]
+  },
+  "dependencies": {
+    "core-js": "^2.6.11"
   }
 }
