@@ -4,7 +4,7 @@
   "description": "Домашние работы на курсе \"OTUS React.js 2020-03\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "builddev": "webpack --mode development",
     "dev": "webpack-dev-server --mode development"
   },
@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
     "babel-loader": "^8.1.0",
+    "jest": "^25.2.7",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
@@ -37,8 +38,9 @@
             "chrome": "41",
             "ie": "10"
           },
-          "debug": true,
-          "useBuiltIns": "usage"
+          "debug": false,
+          "useBuiltIns": "usage",
+          "corejs": "2.6.11"
         }
       ],
       "@babel/typescript"
