@@ -8,9 +8,14 @@ module.exports = function(grunt) {
                 }
             }
             ,
-            runJS: {
+            runTest: {
                 files: [ 'src/*.js', 'src/*.ts'],
                 tasks: ['run:test']
+            }
+            ,
+            runLint: {
+                files: [ 'src/*.js', 'src/*.ts'],
+                tasks: ['run:lint']
             }
         }
         ,
@@ -21,6 +26,10 @@ module.exports = function(grunt) {
             ,
             test: {
                 exec: 'npm test',
+            }
+            ,
+            lint: {
+                exec: 'eslint src/*.*',
             }
           }        
     });
