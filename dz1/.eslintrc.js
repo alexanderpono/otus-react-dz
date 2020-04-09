@@ -13,9 +13,11 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
         "semi": ["warn", "always"],
+        "prettier/prettier": "error"
     }
 };
