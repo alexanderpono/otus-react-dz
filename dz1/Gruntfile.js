@@ -29,7 +29,7 @@ module.exports = function(grunt) {
             }
             ,
             lint: {
-                exec: 'eslint src/*.*',
+                exec: 'npm run lint',
             }
           }        
     });

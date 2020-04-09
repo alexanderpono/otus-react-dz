@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix src/",
     "builddev": "webpack --mode development",
     "dev": "webpack-dev-server --mode development"
   },
