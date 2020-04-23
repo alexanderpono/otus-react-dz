@@ -9,6 +9,13 @@
     "check": "npm run lint && npm test",
     "test": "npx jest"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run check",
+      "pre-push": "npm run check"
+    }
+  },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
