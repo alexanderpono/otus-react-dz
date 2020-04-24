@@ -15,6 +15,9 @@
       "pre-push": "npm run check"
     }
   },
+  "prettier": {
+    "tabWidth": 4
+  },
 
   "keywords": [],
   "author": "",
