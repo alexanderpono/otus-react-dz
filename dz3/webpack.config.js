@@ -1,33 +1,33 @@
-const path = require("path");
+const path = require('path');
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    entry: "./src/index.tsx",
-    devtool: "source-map",
+    entry: './src/index.tsx',
+    devtool: 'source-map',
     resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
         alias: {
-            types: path.resolve(__dirname, "src/types"),
-        },
+            types: path.resolve(__dirname, 'src/types')
+        }
     },
     output: {
-        path: path.join(__dirname, "/dist"),
-        filename: "index.js",
+        path: path.join(__dirname, '/dist'),
+        filename: 'index.js'
     },
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"],
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(js|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: 'babel-loader'
                 }
             }
-        ],
+        ]
     },
     devServer: {
         historyApiFallback: true,
@@ -37,7 +37,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./public/index.html",
-        }),
-    ],
+            template: './public/index.html'
+        })
+    ]
 };
