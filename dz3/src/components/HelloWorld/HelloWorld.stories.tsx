@@ -12,4 +12,3 @@ export const WithKnobs = () => {
     const name = text('userName', 'Alex');
     return <HelloWorld userName={name} />;
 };
-

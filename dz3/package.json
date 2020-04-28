@@ -6,8 +6,11 @@
     "scripts": {
         "dev": "npx webpack-dev-server --mode development",
         "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./src",
-        "check": "npm run lint && npm test",
+        "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
+        "loki:approve": "npx loki approve",
+        "check": "npm run lint && npm test && npm run test:loki",
         "test": "npx jest",
+        "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
         "test-update": "jest --updateSnapshot",
         "storybook": "start-storybook -p 8806",
         "build-storybook": "build-storybook"
@@ -58,6 +61,7 @@
         "husky": "^4.2.5",
         "jest": "^25.4.0",
         "jest-emotion": "^10.0.32",
+        "loki": "^0.20.3",
         "prettier": "^2.0.5",
         "react": "^16.13.1",
         "react-docgen-typescript-loader": "^3.7.2",
@@ -69,5 +73,20 @@
         "webpack-cli": "^3.3.11",
         "webpack-dev-server": "^3.10.3"
     },
-    "dependencies": {}
+    "dependencies": {},
+    "loki": {
+        "configurations": {
+            "chrome.laptop": {
+                "target": "chrome.app",
+                "width": 1366,
+                "height": 768,
+                "deviceScaleFactor": 1,
+                "mobile": false
+            },
+            "chrome.iphone7": {
+                "target": "chrome.app",
+                "preset": "iPhone 7"
+            }
+        }
+    }
 }
