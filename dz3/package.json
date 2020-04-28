@@ -7,7 +7,9 @@
         "dev": "npx webpack-dev-server --mode development",
         "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./src",
         "check": "npm run lint && npm test",
-        "test": "npx jest"
+        "test": "npx jest",
+        "storybook": "start-storybook -p 8806",
+        "build-storybook": "build-storybook"
     },
     "husky": {
         "hooks": {
@@ -27,6 +29,13 @@
         "@babel/preset-react": "^7.9.4",
         "@babel/preset-typescript": "^7.9.0",
         "@babel/runtime": "^7.9.2",
+        "@storybook/addon-actions": "^5.3.18",
+        "@storybook/addon-docs": "^5.3.18",
+        "@storybook/addon-knobs": "^5.3.18",
+        "@storybook/addon-links": "^5.3.18",
+        "@storybook/addon-storysource": "^5.3.18",
+        "@storybook/addons": "^5.3.18",
+        "@storybook/react": "^5.3.18",
         "@types/enzyme": "^3.10.5",
         "@types/jest": "^25.2.1",
         "@types/react": "^16.9.34",
@@ -50,11 +59,14 @@
         "jest-emotion": "^10.0.32",
         "prettier": "^2.0.5",
         "react": "^16.13.1",
+        "react-docgen-typescript-loader": "^3.7.2",
         "react-dom": "^16.13.1",
         "react-test-renderer": "^16.13.1",
+        "storybook-addon-react-docgen": "^1.2.32",
         "typescript": "^3.8.3",
         "webpack": "^4.43.0",
         "webpack-cli": "^3.3.11",
         "webpack-dev-server": "^3.10.3"
-    }
+    },
+    "dependencies": {}
 }

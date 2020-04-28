@@ -1,6 +1,8 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpackRules = require('./webpackRules');
+
 module.exports = {
     entry: './src/index.tsx',
     devtool: 'source-map',
@@ -20,13 +22,7 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             },
-            {
-                test: /\.(js|ts|tsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
-            }
+            ...webpackRules
         ]
     },
     devServer: {
