@@ -8,6 +8,7 @@
         "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./src",
         "check": "npm run lint && npm test",
         "test": "npx jest",
+        "test-update": "jest --updateSnapshot",
         "storybook": "start-storybook -p 8806",
         "build-storybook": "build-storybook"
     },
