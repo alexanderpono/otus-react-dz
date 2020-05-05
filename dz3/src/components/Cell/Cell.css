@@ -1,0 +1,17 @@
+.game-cell {
+    display: block;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    border: 1px solid red;
+    float: left;
+}
+
+.game-cell > span{
+    display: none;
+}
+
+.show-all .game-cell > span,
+.game-cell.show > span{
+    display: inline;
+}
