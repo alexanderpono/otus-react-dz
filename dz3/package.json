@@ -8,7 +8,7 @@
         "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./src",
         "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
         "loki:approve": "npx loki approve",
-        "check": "npm run lint && npm test && npm run test:loki",
+        "check": "npm run lint && npm test",
         "test": "npx jest",
         "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
         "test-update": "jest --updateSnapshot",
@@ -73,7 +73,11 @@
         "webpack-cli": "^3.3.11",
         "webpack-dev-server": "^3.10.3"
     },
-    "dependencies": {},
+    "dependencies": {
+        "@emotion/core": "^10.0.28",
+        "@emotion/styled": "^10.0.27",
+        "emotion": "^10.0.27"
+    },
     "loki": {
         "configurations": {
             "chrome.laptop": {
