@@ -1,29 +1,36 @@
 import React from 'react';
-import { CellProps, CellState, SHOW, HIDE } from '.';
 import './Cell.css';
+
+export interface CellProps {
+    num: number;
+    showContent: boolean;
+    onClick?: Function;
+}
+
+export interface CellState {
+    showContent: boolean;
+}
 
 export class Cell extends React.Component<CellProps, CellState> {
     constructor(props: CellProps) {
         super(props);
-        this.cl = this.cl.bind(this);
-        const newInnerState = this.props.state === SHOW ? SHOW : HIDE;
-        this.state = { show: newInnerState };
+        this.onClick = this.onClick.bind(this);
+        this.state = { showContent: this.props.showContent === true };
     }
 
-    cl() {
-        const triggeredState = this.state.show === SHOW ? HIDE : SHOW;
-        const newState = Object.assign({}, this.state, { show: triggeredState });
-        this.setState(newState);
+    onClick() {
+        const triggeredState = !this.state.showContent;
+        this.setState((prevState) => ({ ...prevState, showContent: triggeredState }));
         if (typeof this.props.onClick === 'function') {
-            this.props.onClick(this.props.num, this.state.show);
+            this.props.onClick(this.props.num, this.state.showContent);
         }
     }
 
     render() {
         return (
             <article
-                className={`game-cell${this.state.show == SHOW ? ' show' : ''}`}
-                onClick={this.cl}
+                className={`game-cell ${this.state.showContent ? 'show' : ''}`}
+                onClick={this.onClick}
             >
                 <span>{this.props.num}</span>
             </article>
