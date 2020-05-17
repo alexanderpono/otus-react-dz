@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 describe('HelloWorld', () => {
     it('It renders using renderer and is compared to snaphot', () => {
         const snapshot = renderer
-            .create(<GameField data={['1', '2', '3']} width={60} showAll={false}></GameField>)
+            .create(<GameField w={3} h={1} showAll={false}></GameField>)
             .toJSON();
         expect(snapshot).toMatchInlineSnapshot(`
             .emotion-1 {
@@ -18,7 +18,17 @@ describe('HelloWorld', () => {
             }
 
             .emotion-0 {
-              display: none;
+              -webkit-transition-property: opacity;
+              transition-property: opacity;
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-timing-function: ease-out;
+              transition-timing-function: ease-out;
+              opacity: 0%;
+            }
+
+            .emotion-0.show {
+              opacity: 100%;
             }
 
             <section
@@ -33,8 +43,17 @@ describe('HelloWorld', () => {
                 onClick={[Function]}
               >
                 <span
-                  className="emotion-0"
-                  display="none"
+                  className=" emotion-0"
+                >
+                  0
+                </span>
+              </article>
+              <article
+                className="emotion-1"
+                onClick={[Function]}
+              >
+                <span
+                  className=" emotion-0"
                 >
                   1
                 </span>
@@ -44,21 +63,9 @@ describe('HelloWorld', () => {
                 onClick={[Function]}
               >
                 <span
-                  className="emotion-0"
-                  display="none"
+                  className=" emotion-0"
                 >
                   2
-                </span>
-              </article>
-              <article
-                className="emotion-1"
-                onClick={[Function]}
-              >
-                <span
-                  className="emotion-0"
-                  display="none"
-                >
-                  3
                 </span>
               </article>
             </section>
