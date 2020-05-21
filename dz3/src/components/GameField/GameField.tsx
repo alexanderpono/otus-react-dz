@@ -41,49 +41,38 @@ export class GameField extends React.Component<GameFieldProps, GameFieldState> {
         });
     }
 
-    componentDidUpdate(prevProps: GameFieldProps) {
-        const oldCellsNumber = prevProps.w * prevProps.h;
-        const newCellsNumber = this.props.w * this.props.h;
-        const newWidthPixels = CELL_WIDTH * this.props.w;
+    static getDerivedStateFromProps(props: GameFieldProps, state: GameFieldState) {
+        const oldCellsNumber = state.data.length;
+        const newCellsNumber = props.w * props.h;
+        const newWidthPixels = CELL_WIDTH * props.w;
+
         if (newCellsNumber > oldCellsNumber) {
-            const newData = this.state.data.concat();
-            const startCellState = this.props.showAll ? CELL_LIVE : CELL_DEAD;
+            const newData = state.data.concat();
+            const startCellState = props.showAll ? CELL_LIVE : CELL_DEAD;
             for (let i = oldCellsNumber; i < newCellsNumber; i++) {
                 newData.push(startCellState);
             }
-            this.setState((oldState) => {
-                return {
-                    ...oldState,
-                    data: newData,
-                    widthPixels: newWidthPixels
-                };
-            });
+            return {
+                ...state,
+                data: newData,
+                widthPixels: newWidthPixels
+            };
         }
 
         if (newCellsNumber < oldCellsNumber) {
-            const newData = this.state.data.concat();
-            const newWidthPixels = CELL_WIDTH * this.props.w;
+            const newData = state.data.concat();
+            const newWidthPixels = CELL_WIDTH * props.w;
             for (let i = newCellsNumber; i < oldCellsNumber; i++) {
                 newData.pop();
             }
-            this.setState((oldState) => {
-                return {
-                    ...oldState,
-                    data: newData,
-                    widthPixels: newWidthPixels
-                };
-            });
-        }
-    }
-
-    componentWillUnmount() {
-        this.setState((oldState) => {
             return {
-                ...oldState,
-                data: [],
-                widthPixels: 0
+                ...state,
+                data: newData,
+                widthPixels: newWidthPixels
             };
-        });
+        }
+
+        return null;
     }
 
     render() {
