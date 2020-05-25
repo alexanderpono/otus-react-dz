@@ -1,21 +1,29 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+export const CELL_WIDTH = 20;
+export const CELL_HEIGHT = 20;
+export const CELL_DEAD = false;
+export const CELL_LIVE = true;
+
 const Article = styled.article`
     display: block;
-    width: 18px;
-    height: 18px;
+    width: ${CELL_WIDTH - 2}px;
+    height: ${CELL_HEIGHT - 2}px;
     text-align: center;
     border: 1px solid red;
     float: left;
 `;
 
-export interface SpanProps {
-    display: string;
-}
+const Span = styled.span`
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    opacity: 0%;
 
-const Span = styled.span<SpanProps>`
-    display: ${(props) => props.display};
+    &.show {
+        opacity: 100%;
+    }
 `;
 
 export interface CellProps {
@@ -46,7 +54,7 @@ export class Cell extends React.Component<CellProps, CellState> {
     render() {
         return (
             <Article onClick={this.onClick}>
-                <Span display={this.state.showContent ? 'inline' : 'none'}>{this.props.num}</Span>
+                <Span className={this.state.showContent ? 'show' : ''}>{this.props.num}</Span>
             </Article>
         );
     }

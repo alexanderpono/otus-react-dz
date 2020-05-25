@@ -1,0 +1,3 @@
+создать тест для GameField::onCellClick()
+создать интерфейс для функции GameField::onCellClick()
+переименовать поле GameField.state.data - дать более говорящее имя

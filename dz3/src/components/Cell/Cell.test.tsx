@@ -17,7 +17,17 @@ describe('Cell', () => {
             }
 
             .emotion-0 {
-              display: none;
+              -webkit-transition-property: opacity;
+              transition-property: opacity;
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-timing-function: ease-out;
+              transition-timing-function: ease-out;
+              opacity: 0%;
+            }
+
+            .emotion-0.show {
+              opacity: 100%;
             }
 
             <article
@@ -25,8 +35,7 @@ describe('Cell', () => {
               onClick={[Function]}
             >
               <span
-                className="emotion-0"
-                display="none"
+                className=" emotion-0"
               >
                 2
               </span>
@@ -56,5 +65,28 @@ describe('Cell', () => {
         cell.find('article').simulate('click');
         expect(receivedCellNumber).toEqual(2);
         expect(receivedCellState).toEqual(false);
+    });
+
+    it('sets class "show" for inner Span after cell is clicked', () => {
+        const cell = mount(<Cell num={2} showContent={false}></Cell>);
+        cell.find('article').simulate('click');
+
+        expect(cell.find('span').length).toEqual(1);
+        const props = cell.find('span').props();
+        expect(typeof props.className !== 'undefined');
+        const className = props.className || '';
+        expect(className.indexOf('show') >= 0).toBe(true);
+    });
+
+    it('do not sets class "show" for inner Span after cell is clicked twice', () => {
+        const cell = mount(<Cell num={2} showContent={false}></Cell>);
+        cell.find('article').simulate('click');
+        cell.find('article').simulate('click');
+
+        expect(cell.find('span').length).toEqual(1);
+        const props = cell.find('span').props();
+        expect(typeof props.className !== 'undefined');
+        const className = props.className || '';
+        expect(className.indexOf('show') >= 0).toBe(false);
     });
 });
